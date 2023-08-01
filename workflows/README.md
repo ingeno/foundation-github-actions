@@ -40,5 +40,5 @@ jobs:
 
 ## Notes
 
-- This action assumes that you have already set up the necessary AWS credentials and permissions to interact with the ECR repository (e.g. by using the `configure-aws-credentials` action).
+- This action assumes that you have already set up the necessary AWS credentials and permissions to interact with the ECR repository.
 - Ensure that the required environment variables, if any, are properly set to configure the AWS CLI and access ECR.
