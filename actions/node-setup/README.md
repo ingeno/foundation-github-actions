@@ -30,7 +30,7 @@ jobs:
       # Step 2: Run the Node Setup action
       - name: Node Setup
         id: node-setup
-        uses: ingeno/foundation-github-actions/aws/actions/node-setup/node-setup-action@v3
+        uses: ingeno/foundation-github-actions/actions/node-setup/node-setup-action@v3
         with:
           working-directory: my-project-directory
 

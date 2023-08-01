@@ -31,7 +31,7 @@ For this action to work properly, the following permissions are needed to intera
 jobs:
   build-backend-api:
     name: Build backend-api
-    uses: ingeno/foundation-github-actions/aws/workflows/aws-docker-deploy.yml@v3
+    uses: ingeno/foundation-github-actions/workflows/aws-docker-deploy.yml@v3
     secrets: inherit
     with:
       repository: your-repository-name

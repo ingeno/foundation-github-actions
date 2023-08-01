@@ -38,7 +38,7 @@ jobs:
       # Step 2: Run the AWS Cognito Information action
       - name: Get AWS Cognito Information
         id: cognito-info
-        uses: ingeno/foundation-github-actions/aws/actions/aws-cognito-information-action@v2
+        uses: ingeno/foundation-github-actions/actions/aws-cognito-information-action@v2
         with:
           aws-region: ca-central-1
 

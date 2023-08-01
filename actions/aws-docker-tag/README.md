@@ -34,7 +34,7 @@ jobs:
       # Step 2: Run the Tag Docker Image action
       - name: Tag Docker Image
         id: tag-docker-image
-        uses: ingeno/foundation-github-actions/aws/actions/tag-docker-image-action@v3
+        uses: ingeno/foundation-github-actions/actions/tag-docker-image-action@v3
         with:
           repository: my-ecr-repo
           sourceTag: latest

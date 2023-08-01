@@ -32,7 +32,7 @@ jobs:
       # Step 2: Run the Configure AWS Credentials action
       - name: Configure AWS Credentials
         id: configure-aws-credentials
-        uses: ingeno/foundation-github-actions/aws/actions/configure-aws-credentials-action@v3
+        uses: ingeno/foundation-github-actions/actions/configure-aws-credentials-action@v3
         with:
           aws-account-id: 123456789012
           aws-region: ca-central-1

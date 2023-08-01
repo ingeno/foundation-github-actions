@@ -36,7 +36,7 @@ jobs:
       # Step 2: Run the Docker Deploy action
       - name: Docker Deploy
         id: docker-deploy
-        uses: ingeno/foundation-github-actions/aws/actions/docker-deploy-action@v3
+        uses: ingeno/foundation-github-actions/actions/docker-deploy-action@v3
         with:
           registry: your-container-registry.example.com
           repository: my-docker-repo
