@@ -1,0 +1,33 @@
+name: Docker Deploy
+description: Docker build, tag and push
+
+inputs:
+  registry:
+    required: true
+    description: Url of the image registry
+
+  repository:
+    required: true
+    description: Name of the repository
+
+  tag:
+    required: false
+    default: dev
+    description: Tag of the built image
+
+  dockerfile:
+    required: false
+    default: dockerfile.yml
+    description: Location of the dockerfile
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Build, tag and push image
+      shell: bash
+      id: docker_setup
+      env:
+        IMAGE_TAG: ${{ inputs.registry }}/${{ inputs.repository }}:${{ inputs.tag }}
+      run: |
+        docker build -f ${{ inputs.dockerfile }} -t $IMAGE_TAG .
+        docker push $IMAGE_TAG

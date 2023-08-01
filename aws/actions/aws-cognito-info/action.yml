@@ -1,0 +1,46 @@
+name: AWS Cognito information
+description: Get the AWS Cognito information
+
+inputs:
+  aws-region:
+    required: true
+    description: AWS Region
+
+outputs:
+  user-pool-id:
+    description: AWS Cognito user pool id
+    value: ${{ steps.get-user-pool-id.outputs.USER_POOL_ID }}
+
+  user-pool-client-id:
+    description: AWS Cognito user pool client id
+    value: ${{ steps.get-user-pool-client-id.outputs.USER_POOL_CLIENT_ID }}
+
+runs:
+  using: 'composite'
+  steps:
+    - id: get-user-pool-id
+      name: Get AWS Cognito user pool id
+      shell: bash
+      run: |
+        USER_POOL_ID=$(aws cognito-idp \
+          --region ${{ inputs.aws-region }} \
+          list-user-pools --max-results 1 \
+          --output text \
+          --query "UserPools[0].Id")
+        echo "USER_POOL_ID=$USER_POOL_ID" >> $GITHUB_OUTPUT
+    - id: get-user-pool-client-id
+      name: Get AWS Cognito user pool client id
+      shell: bash
+      run: |
+        USER_POOL_CLIENT_ID=$(aws cognito-idp \
+          --region ${{ inputs.aws-region }} \
+          list-user-pool-clients \
+          --user-pool ${{ steps.get-user-pool-id.outputs.USER_POOL_ID }} \
+          --output text \
+          --query "UserPoolClients[0].ClientId")
+        echo "USER_POOL_CLIENT_ID=$USER_POOL_CLIENT_ID" >> $GITHUB_OUTPUT
+    - name: Display Information
+      shell: bash
+      run: |
+        echo "USER_POOL_ID '${{ steps.get-user-pool-id.outputs.USER_POOL_ID }}'"
+        echo "USER_POOL_CLIENT_ID '${{ steps.get-user-pool-client-id.outputs.USER_POOL_CLIENT_ID }}'"

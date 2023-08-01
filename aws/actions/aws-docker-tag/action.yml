@@ -1,0 +1,27 @@
+name: Tag Docker Image
+description: Tag existing image on the AWS ECR Registry
+
+inputs:
+  repository:
+    required: true
+    description: Name of the repository
+
+  sourceTag:
+    required: false
+    description: Tag of the source image
+
+  targetTag:
+    required: true
+    description: Tag to apply
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Tag Docker Image
+      shell: bash
+      run: |
+        EXISTING_TARGET_IMAGE_MANIFEST=$(aws ecr batch-get-image --repository-name ${{ inputs.repository }} --image-ids imageTag=${{ inputs.targetTag }} --output json)
+        if echo "${EXISTING_TARGET_IMAGE_MANIFEST}" | grep 'Requested image not found'; then
+          MANIFEST=$(aws ecr batch-get-image --repository-name ${{ inputs.repository }} --image-ids imageTag=${{ inputs.sourceTag }} --output json | jq --raw-output --join-output '.images[0].imageManifest')
+          aws ecr put-image --repository-name ${{ inputs.repository }} --image-tag ${{ inputs.targetTag }} --image-manifest "$MANIFEST"
+        fi

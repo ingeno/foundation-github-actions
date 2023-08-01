@@ -1,0 +1,62 @@
+name: AWS Docker Deploy
+
+on:
+  workflow_call:
+    inputs:
+      repository:
+        required: true
+        type: string
+        description: Name of the repository
+      dockerfile:
+        required: true
+        type: string
+        description: Location of the dockerfile
+      client-environment-file-path:
+        required: false
+        type: string
+        description: Location of the .env file of front-end client
+      dotenv-value:
+        required: false
+        type: string
+        description: The value needed to fill the .env
+
+# These permissions are needed to interact with GitHub's OIDC Token endpoint.
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  aws-docker-deploy:
+    runs-on: ubuntu-latest
+    name: Push to AWS ECR
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Configure AWS Credentials
+        uses: ingeno/foundation-github-actions/aws/actions/configure-aws-credentials@v3
+        with:
+          aws-account-id: ${{ vars.SHARED_SERVICES_ACCOUNT_ID }}
+          aws-region: ${{ vars.AWS_REGION }}
+
+      - name: Login to ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
+
+      - name: Fill .env file for frontend-client
+        if: ${{ inputs.client-environment-file-path && inputs.dotenv-value }}
+        shell: bash
+        run: |
+          echo ${{ inputs.dotenv-value }}
+          touch ${{ inputs.client-environment-file-path }}
+          echo -e "${{ inputs.dotenv-value }}" > ${{ inputs.client-environment-file-path }}
+          echo ".env created!"
+          cat ${{ inputs.client-environment-file-path }}
+
+      - name: Build, tag and Push image
+        uses: ingeno/foundation-github-actions/aws/actions/docker-deploy@v3
+        with:
+          registry: ${{ vars.SHARED_SERVICES_ACCOUNT_ID }}.dkr.ecr.${{ vars.AWS_REGION }}.amazonaws.com
+          repository: ${{ inputs.repository }}
+          tag: ${{ github.sha }}
+          dockerfile: ${{ inputs.dockerfile }}
