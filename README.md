@@ -5,4 +5,4 @@ This repository provides Github Actions, [composite action](https://docs.github.
 and reusable workflows.
 
 ## Table of contents
-- [Mend Scan Action](docs/mend-scan.md)
+- [Mend Scan Action](actions/mend-scan/README.md)
