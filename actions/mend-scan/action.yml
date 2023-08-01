@@ -1,0 +1,81 @@
+name: Mend Scan
+description: Scan for vulnerabilities and license compliance
+
+inputs:
+  api-key:
+    required: true
+    description: A unique identifier of your organization. Used to identify the organization in plugins.
+
+  product-token:
+    required: true
+    description: Unique identifier of the product to update; found on the Integrate page. Required if Project Token is not defined.
+
+  check-policies:
+    required: false
+    default: true
+    description: Whether to send the check policies request before updating mend
+
+  update-inventory:
+    required: false
+    default: false
+    description: Whether to send an update request
+
+  config-file-path:
+    required: false
+    default: './wss-unified-agent.config'
+    description: Configuration file name (including file path).
+
+  yarn-workspaces:
+    required: false
+    default: false
+    description: True if the project is structured as a monorepo using yarn workspaces
+
+  log-level:
+    required: false
+    default: info
+    description: Specifies the minimal log level printed to stdout/command line
+
+  locations-to-scan:
+    required: false
+    default: ./
+    description: Comma-separated list of directories and/or files to scan
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Install Java
+      uses: actions/setup-java@v3
+      with:
+        distribution: 'temurin'
+        java-version: '17.0.7+7'
+        java-package: jre
+
+    - name: Copy workspaces lock file to subfolders
+      shell: bash
+      if: ${{inputs.yarn-workspaces == 'true'}}
+      # The intention in the below command is to copy the yarn.lock from the root workspace to the other workspaces
+      # as a workaround since Mend does not support yarn workspaces as of the writing of this step.
+      # The file check is to ensure we skip the root workspace without explicitly having to pass the name of the workspace.
+      # Forcing the exit 0 is meant to not fail the step when the root workspace is encountered.
+      run: |
+        export ROOT_WORKSPACE=$(pwd)
+        yarn workspaces foreach exec '[ ! -r "./yarn.lock" ] && cp $ROOT_WORKSPACE/yarn.lock . || exit 0'
+
+    - name: Scan
+      shell: bash
+      env:
+        WS_APIKEY: ${{inputs.api-key}}
+        WS_PRODUCTTOKEN: ${{inputs.product-token}}
+        WS_CHECKPOLICIES: ${{inputs.check-policies}}
+        WS_UPDATEINVENTORY: ${{inputs.update-inventory}}
+      run: |
+        echo 'Downloading Mend Unified Agent'
+        curl -LJO https://unified-agent.s3.amazonaws.com/wss-unified-agent.jar
+        if [[ "$(curl -sL https://unified-agent.s3.amazonaws.com/wss-unified-agent.jar.sha256)" != "$(sha256sum wss-unified-agent.jar)" ]] ; then
+          echo 'Integrity Check Failed'
+          exit 1
+        else
+          echo 'Integrity Check Passed'
+          echo 'Starting Mend Scan'
+          java -jar wss-unified-agent.jar -c ${{inputs.config-file-path}} -d ${{inputs.locations-to-scan}} -logLevel ${{inputs.log-level}}
+        fi
