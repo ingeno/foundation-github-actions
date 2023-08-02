@@ -51,4 +51,4 @@ jobs:
 
 ## Notes
 
-- Before using this action, ensure that you have set up the necessary AWS credentials to authenticate with the AWS ECR (e.g. by using the `configure-aws-credentials` action).
+- Before using this action, ensure that you have set up the necessary AWS credentials to authenticate with the AWS S3 (e.g. by using the `configure-aws-credentials` action).

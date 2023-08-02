@@ -55,6 +55,4 @@ jobs:
 
 ## Notes
 
-- Before using this action, ensure that you have set up the necessary credentials to authenticate with the container image registry.
-
-That's all for the "Docker Deploy" GitHub Action. If you have any further questions or need assistance, feel free to reach out!
+- Before using this action, ensure that you have set up the necessary credentials to authenticate with the container image registry by setting the `SHARED_SERVICES_ACCOUNT_ID` variable in your repository.
