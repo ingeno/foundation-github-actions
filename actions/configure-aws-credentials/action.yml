@@ -16,6 +16,6 @@ runs:
     - name: Configure Aws Credentials for GitHub OIDC
       uses: aws-actions/configure-aws-credentials@v2
       with:
-        # the role AWSGitHubActionRoleForCICD is defined by @ingeno/aws-cdk-constructs
+        # the role AWSGitHubActionRoleForCICD is defined by @ingeno/foundation-infra-aws
         role-to-assume: arn:aws:iam::${{ inputs.aws-account-id }}:role/AWSGitHubActionRoleForCICD
         aws-region: ${{ inputs.aws-region }}

@@ -2,7 +2,7 @@
 
 ## Description
 
-The "Configure AWS Credentials" GitHub Action sets up AWS credentials for GitHub OIDC (OpenID Connect) to interact with AWS services using the specified AWS account and region. This action assumes the presence of a role named "AWSGitHubActionRoleForCICD," which is defined by the `@ingeno/aws-cdk-constructs` library.
+The "Configure AWS Credentials" GitHub Action sets up AWS credentials for GitHub OIDC (OpenID Connect) to interact with AWS services using the specified AWS account and region. This action assumes the presence of a role named "AWSGitHubActionRoleForCICD," which is defined by the `@ingeno/foundation-infra-aws` library.
 
 ## Inputs
 
