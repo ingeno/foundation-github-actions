@@ -12,7 +12,7 @@ The "Docker Deploy" GitHub Action automates the process of building, tagging, an
 
 3. `tag` (optional, type: string): The tag of the built image. If not provided, the default value is "dev".
 
-4. `dockerfile` (optional, type: string): The location of the Dockerfile used to build the Docker image. If not provided, the default value is "dockerfile.yml".
+4. `dockerfile` (optional, type: string): The location of the Dockerfile used to build the Docker image. If not provided, the default value is "Dockerfile".
 
 ## Workflow Example
 

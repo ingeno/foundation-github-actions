@@ -17,7 +17,7 @@ inputs:
 
   dockerfile:
     required: false
-    default: dockerfile.yml
+    default: Dockerfile
     description: Location of the dockerfile
 
 runs:
