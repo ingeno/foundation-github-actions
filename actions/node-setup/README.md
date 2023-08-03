@@ -30,7 +30,7 @@ jobs:
       # Step 2: Run the Node Setup action
       - name: Node Setup
         id: node-setup
-        uses: ingeno/foundation-github-actions/actions/node-setup/node-setup-action@v3
+        uses: ingeno/foundation-github-actions/actions/node-setup/node-setup@<latest>
         with:
           working-directory: my-project-directory
 
@@ -47,4 +47,5 @@ jobs:
 - The action uses `actions/setup-node@v3` to set up the specified Node.js version using the `.nvmrc` file.
 - It then caches the Yarn cache directory using `actions/cache@v3` to speed up future installations.
 - The action finally installs the project dependencies using Yarn with the `yarn install --immutable` command.
+- To see what the current latest version of this action is, head over to this repository's [release page](https://github.com/ingeno/foundation-github-actions/releases).
 

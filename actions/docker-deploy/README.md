@@ -36,7 +36,7 @@ jobs:
       # Step 2: Run the Docker Deploy action
       - name: Docker Deploy
         id: docker-deploy
-        uses: ingeno/foundation-github-actions/actions/docker-deploy-action@v3
+        uses: ingeno/foundation-github-actions/actions/docker-deploy@<latest>
         with:
           registry: your-container-registry.example.com
           repository: my-docker-repo
@@ -56,3 +56,4 @@ jobs:
 ## Notes
 
 - Before using this action, ensure that you have set up the necessary credentials to authenticate with the container image registry by setting the `SHARED_SERVICES_ACCOUNT_ID` variable in your repository.
+- To see what the current latest version of this action is, head over to this repository's [release page](https://github.com/ingeno/foundation-github-actions/releases).

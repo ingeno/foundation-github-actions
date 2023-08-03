@@ -34,7 +34,7 @@ jobs:
       # Step 2: Run the Tag Docker Image action
       - name: Tag Docker Image
         id: tag-docker-image
-        uses: ingeno/foundation-github-actions/actions/tag-docker-image-action@v3
+        uses: ingeno/foundation-github-actions/actions/aws-docker-tag@<latest>
         with:
           repository: my-ecr-repo
           sourceTag: latest
@@ -52,3 +52,4 @@ jobs:
 ## Notes
 
 - Before using this action, ensure that you have set up the necessary AWS credentials to authenticate with the AWS ECR (e.g. by using the `configure-aws-credentials` action).
+- To see what the current latest version of this action is, head over to this repository's [release page](https://github.com/ingeno/foundation-github-actions/releases).

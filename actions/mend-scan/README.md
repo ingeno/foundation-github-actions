@@ -23,7 +23,7 @@ jobs:
         uses: ingeno/aws-workflows/.github/actions/node-setup@v1
 
       - name: Mend Scanner
-        uses: ingeno/mend-scan-action@v1
+        uses: ingeno/mend-scan@<latest>
         with:
           api-key: ${{secrets.WS_APIKEY}}
           product-token: ${{secrets.WS_PRODUCTTOKEN}}
@@ -59,3 +59,7 @@ npm.projectNameFromDependencyFile=true
 For more details on the parameters available and their functions, please visit the Mend documentation for [Unified Agent Configuration Parameters](https://docs.mend.io/bundle/unified_agent/page/unified_agent_configuration_parameters.html).
 
 Note: In order to use the parameter `npm.projectNameFromDependencyFile=true` along with the `projectPerFolder=true`, you need to explicitly declare the version of each of the sub-projects in their corresponding `package.json` file.
+
+### Notes
+
+To see what the current latest version of this action is, head over to this repository's [release page](https://github.com/ingeno/foundation-github-actions/releases).

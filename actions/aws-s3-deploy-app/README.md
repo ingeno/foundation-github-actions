@@ -34,7 +34,7 @@ jobs:
       # Step 2: Run the Deploy App to S3 action
       - name: Deploy App to S3
         id: deploy-to-s3
-        uses: ingeno/foundation-github-actions/actions/deploy-app-to-s3-action@v3
+        uses: ingeno/foundation-github-actions/actions/aws-s3-deploy-app@<latest>
         with:
           aws-region: ca-central-1
           aws-s3-bucket: my-s3-bucket
@@ -52,3 +52,4 @@ jobs:
 ## Notes
 
 - Before using this action, ensure that you have set up the necessary AWS credentials to authenticate with the AWS S3 (e.g. by using the `configure-aws-credentials` action).
+- To see what the current latest version of this action is, head over to this repository's [release page](https://github.com/ingeno/foundation-github-actions/releases).

@@ -32,7 +32,7 @@ jobs:
       # Step 2: Run the Configure AWS Credentials action
       - name: Configure AWS Credentials
         id: configure-aws-credentials
-        uses: ingeno/foundation-github-actions/actions/configure-aws-credentials-action@v3
+        uses: ingeno/foundation-github-actions/actions/configure-aws-credentials@<latest>
         with:
           aws-account-id: 123456789012
           aws-region: ca-central-1
@@ -49,3 +49,4 @@ jobs:
 
 - Before using this action, ensure that you have set up the necessary AWS credentials with sufficient permissions to assume the role "AWSGitHubActionRoleForCICD."
 - The action uses the `aws-actions/configure-aws-credentials@v2` action to set up the AWS credentials for OIDC.
+- To see what the current latest version of this action is, head over to this repository's [release page](https://github.com/ingeno/foundation-github-actions/releases).
