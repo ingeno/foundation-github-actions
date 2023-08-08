@@ -15,4 +15,4 @@ and reusable workflows.
 - [Node Setup](actions/node-setup/README.md)
 
 ### Workflows
-- [AWS Docker Deploy](workflows/aws-docker-deploy.md)
+- [AWS Docker Deploy](.github/workflows/aws-docker-deploy.md)
