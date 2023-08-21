@@ -10,6 +10,8 @@ The "Deploy App to S3" GitHub Action automates the process of uploading a build 
 
 2. `aws-s3-bucket` (required, type: string): The name of the AWS S3 bucket where the build app will be deployed.
 
+2. `local-directory` (required, type: string): The path of the local directory to upload.
+
 3. `destination` (optional, type: string): The directory inside the S3 bucket where the build artifacts will be uploaded. The default value is "build".
 
 ## Workflow Example
@@ -39,6 +41,7 @@ jobs:
           aws-region: ca-central-1
           aws-s3-bucket: my-s3-bucket
           destination: my-build-directory
+          local-directory: ./my-app/dist
 
       # Step 3: Optionally use the outputs in subsequent steps (example)
       - name: Display Deployment Details
