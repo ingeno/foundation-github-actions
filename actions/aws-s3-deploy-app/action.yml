@@ -10,6 +10,10 @@ inputs:
     required: true
     description: The name of the s3 bucket
 
+  local-directory:
+    required: true
+    description: The local directory to upload
+
   destination:
     description: The directory inside of the S3 bucket
     default: build
@@ -20,7 +24,7 @@ runs:
     - name: Upload to S3 Bucket (without index.html)
       shell: bash
       run: |
-        aws s3 sync ./frontend/admin/dist s3://${{ inputs.aws-s3-bucket }}/${{ inputs.destination }} \
+        aws s3 sync ${{ inputs.local-directory }} s3://${{ inputs.aws-s3-bucket }}/${{ inputs.destination }} \
                 --region ${{ inputs.aws-region }} \
                 --no-progress \
                 --follow-symlinks \
@@ -31,6 +35,6 @@ runs:
     - name: Upload index.html to S3 Bucket
       shell: bash
       run: |
-        aws s3 cp ./frontend/admin/dist/index.html s3://${{ inputs.aws-s3-bucket }}/${{ inputs.destination }}/index.html \
+        aws s3 cp ${{ inputs.local-directory }}/index.html s3://${{ inputs.aws-s3-bucket }}/${{ inputs.destination }}/index.html \
                 --region ${{ inputs.aws-region }} \
                 --cache-control max-age=0 \
