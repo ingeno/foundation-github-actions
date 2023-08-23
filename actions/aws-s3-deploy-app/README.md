@@ -10,7 +10,7 @@ The "Deploy App to S3" GitHub Action automates the process of uploading a build 
 
 2. `aws-s3-bucket` (required, type: string): The name of the AWS S3 bucket where the build app will be deployed.
 
-2. `local-directory` (optional, type: string): The path of the local directory to upload. The default value is "./frontend/admin/dist".
+2. `local-directory` (optional, type: string): The path of the local directory to upload. The default value is "./frontend/dist".
 
 3. `destination` (optional, type: string): The directory inside the S3 bucket where the build artifacts will be uploaded. The default value is "build".
 

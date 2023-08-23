@@ -12,7 +12,7 @@ inputs:
 
   local-directory:
     description: The local directory to upload
-    default: ./frontend/admin/dist
+    default: ./frontend/dist
 
   destination:
     description: The directory inside of the S3 bucket
