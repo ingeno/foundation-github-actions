@@ -20,6 +20,11 @@ inputs:
     default: Dockerfile
     description: Location of the dockerfile
 
+  npm-read-packages-token:
+    required: false
+    default: ''
+    description: Token for reading NPM packages from private repositories
+
 runs:
   using: 'composite'
   steps:
@@ -28,6 +33,8 @@ runs:
       id: docker_setup
       env:
         IMAGE_TAG: ${{ inputs.registry }}/${{ inputs.repository }}:${{ inputs.tag }}
+        NPM_READ_PACKAGES_TOKEN: ${{ inputs.npm-read-packages-token }}
+        DOCKER_BUILDKIT: '1'
       run: |
-        docker build -f ${{ inputs.dockerfile }} -t $IMAGE_TAG .
+        docker build -f ${{ inputs.dockerfile }} -t $IMAGE_TAG --secret id=npm_read_packages_token,env=NPM_READ_PACKAGES_TOKEN .
         docker push $IMAGE_TAG

@@ -14,6 +14,8 @@ The "Docker Deploy" GitHub Action automates the process of building, tagging, an
 
 4. `dockerfile` (optional, type: string): The location of the Dockerfile used to build the Docker image. If not provided, the default value is "Dockerfile".
 
+5. `npm-read-packages-token` (optional, type: string): Token for reading NPM packages from private repositories
+
 ## Workflow Example
 
 ```yaml
@@ -42,6 +44,7 @@ jobs:
           repository: my-docker-repo
           tag: v1.0.1
           dockerfile: path/to/Dockerfile
+          npm-read-packages-token: secret-token-used-to-access-private-package-repositories
 
       # Step 3: Optionally use the outputs in subsequent steps (example)
       - name: Display Docker Image Details

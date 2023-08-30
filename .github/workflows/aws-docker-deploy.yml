@@ -19,6 +19,10 @@ on:
         required: false
         type: string
         description: The value needed to fill the .env
+      npm-read-packages-token:
+        required: false
+        type: string
+        description: Token for reading NPM packages from private repositories
 
 # These permissions are needed to interact with GitHub's OIDC Token endpoint.
 permissions:
@@ -54,9 +58,10 @@ jobs:
           cat ${{ inputs.client-environment-file-path }}
 
       - name: Build, tag and Push image
-        uses: ingeno/foundation-github-actions/actions/docker-deploy@v3
+        uses: ingeno/foundation-github-actions/actions/docker-deploy@v4
         with:
           registry: ${{ vars.SHARED_SERVICES_ACCOUNT_ID }}.dkr.ecr.${{ vars.AWS_REGION }}.amazonaws.com
           repository: ${{ inputs.repository }}
           tag: ${{ github.sha }}
           dockerfile: ${{ inputs.dockerfile }}
+          npm_read_packages_token: ${{ inputs.npm_read_packages_token }}

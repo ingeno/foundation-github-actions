@@ -1,4 +1,4 @@
-# AWS Docker Deploy GitHub Action
+# AWS Docker Deploy GitHub Workflow
 
 ## Description
 
@@ -17,6 +17,8 @@ To use this GitHub Action, you need to define it in your workflow file (e.g., `.
 3. `client-environment-file-path` (optional, type: string): The location of the `.env` file for the front-end client, if applicable. This file is used to configure environment variables for the client application.
 
 4. `dotenv-value` (optional, type: string): The value needed to fill the `.env` file for the front-end client. This input is only relevant if `client-environment-file-path` is provided.
+
+5. `npm-read-packages-token` (optional, type: string): Token for reading NPM packages from private repositories
 
 ### Permissions
 
