@@ -1,0 +1,9 @@
+{
+  extends: [
+    'config:base'
+  ],
+  timezone: 'Canada/Eastern',
+  schedule: [
+    "before 4am on Monday"
+  ]
+}
