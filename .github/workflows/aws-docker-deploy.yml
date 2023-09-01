@@ -19,10 +19,6 @@ on:
         required: false
         type: string
         description: The value needed to fill the .env
-      npm-read-packages-token:
-        required: false
-        type: string
-        description: Token for reading NPM packages from private repositories
 
 # These permissions are needed to interact with GitHub's OIDC Token endpoint.
 permissions:
@@ -64,4 +60,4 @@ jobs:
           repository: ${{ inputs.repository }}
           tag: ${{ github.sha }}
           dockerfile: ${{ inputs.dockerfile }}
-          npm_read_packages_token: ${{ inputs.npm_read_packages_token }}
+          npm_read_packages_token: ${{ secrets.NPM_READ_PACKAGES_TOKEN }}
