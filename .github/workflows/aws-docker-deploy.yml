@@ -60,4 +60,4 @@ jobs:
           repository: ${{ inputs.repository }}
           tag: ${{ github.sha }}
           dockerfile: ${{ inputs.dockerfile }}
-          npm_read_packages_token: ${{ secrets.NPM_READ_PACKAGES_TOKEN }}
+          npm-read-packages-token: ${{ secrets.NPM_READ_PACKAGES_TOKEN }}

@@ -36,5 +36,5 @@ runs:
         NPM_READ_PACKAGES_TOKEN: ${{ inputs.npm-read-packages-token }}
         DOCKER_BUILDKIT: '1'
       run: |
-        docker build -f ${{ inputs.dockerfile }} -t $IMAGE_TAG --secret id=npm_read_packages_token,env=NPM_READ_PACKAGES_TOKEN .
+        docker build -f ${{ inputs.dockerfile }} -t $IMAGE_TAG --secret id=NPM_READ_PACKAGES_TOKEN,env=NPM_READ_PACKAGES_TOKEN .
         docker push $IMAGE_TAG
