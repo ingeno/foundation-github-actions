@@ -1,0 +1,64 @@
+# This is opt-in inheritance, see: https://github.com/probot/probot-config#an-opt-in-pattern
+# The base file we are extending here is located at: https://github.com/ingeno/.github/blob/main/.github/_customers.yml
+# Format is:
+# _extends: <repo in the same organization>:<file location relative to repo root>
+# This file defines some settings we want for all our customer repositories
+_extends: .github:.github/_customers.yml
+
+# For a reference on how to define settings, see: https://github.com/probot/settings#usage
+
+repository:
+  name: foundation-github-actions
+  description: This repository provides GitHub Actions, composite actions and reusable workflows for Ingeno repositories
+  topics: greenfield, architecture, foundation
+  is_template: false
+  default_branch: main
+  allow_auto_merge: true
+  allow_squash_merge: true
+  allow_merge_commit: false
+  allow_rebase_merge: false
+  delete_branch_on_merge: true
+  enable_automated_security_fixes: true
+  enable_vulnerability_alerts: true
+
+teams:
+  - name: innovation
+    permission: admin
+
+labels:
+  - name: 'bug :bug:'
+    description: Something is broken
+    color: '#cc0000'
+  - name: 'chore :hammer:'
+    color: '#f2df8c'
+    description: Repository or code maintenance
+  - name: dependencies
+    color: '#70f9e0'
+    description: Update dependencies
+  - name: 'documentation :book:'
+    color: '#6cb524'
+    description: Change in the documentation
+  - name: feature
+    color: '#336699'
+    description: New functionality
+
+# This does a few things:
+# - force pushes to main are forbidden (PRs are mandatory to push to main)
+# - at least two code review approvals
+# - if any file modified has an entry in CODEOWNERS, one code owner must approve
+# - branch must be up-to-date to merge
+# - disables status checks to merge PRs as there are no workflows running in this repo
+# - commits must be signed
+# - repository admins cannot bypass these rules
+branches:
+  - name: main
+    protection:
+      required_pull_request_reviews:
+        required_approving_review_count: 2
+        dismiss_stale_reviews: false
+        require_code_owner_reviews: true
+        dismissal_restrictions: {}
+      required_status_checks: null
+      required_signatures: true
+      enforce_admins: true
+      restrictions: null
