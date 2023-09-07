@@ -25,12 +25,18 @@ inputs:
     default: ''
     description: Token for reading NPM packages from private repositories
 
+  working-directory:
+    required: false
+    default: ./
+    description: The current working directory to run the docker command in
+
 runs:
   using: 'composite'
   steps:
     - name: Build, tag and push image
       shell: bash
       id: docker_setup
+      working-directory: ${{ inputs.working-directory }}
       env:
         IMAGE_TAG: ${{ inputs.registry }}/${{ inputs.repository }}:${{ inputs.tag }}
         NPM_READ_PACKAGES_TOKEN: ${{ inputs.npm-read-packages-token }}

@@ -19,6 +19,11 @@ on:
         required: false
         type: string
         description: The value needed to fill the .env
+      working-directory:
+        required: false
+        type: string
+        default: ./
+        description: The current working directory to run the commands in
 
 # These permissions are needed to interact with GitHub's OIDC Token endpoint.
 permissions:
@@ -52,12 +57,15 @@ jobs:
           echo -e "${{ inputs.dotenv-value }}" > ${{ inputs.client-environment-file-path }}
           echo ".env created!"
           cat ${{ inputs.client-environment-file-path }}
+        working-directory: ${{ inputs.working-directory }}
+
 
       - name: Build, tag and Push image
-        uses: ingeno/foundation-github-actions/actions/docker-deploy@v4
+        uses: ingeno/foundation-github-actions/actions/docker-deploy@v5
         with:
           registry: ${{ vars.SHARED_SERVICES_ACCOUNT_ID }}.dkr.ecr.${{ vars.AWS_REGION }}.amazonaws.com
           repository: ${{ inputs.repository }}
           tag: ${{ github.sha }}
           dockerfile: ${{ inputs.dockerfile }}
           npm-read-packages-token: ${{ secrets.NPM_READ_PACKAGES_TOKEN }}
+          working-directory: ${{ inputs.working-directory }}

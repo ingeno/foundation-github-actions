@@ -18,6 +18,8 @@ To use this GitHub Action, you need to define it in your workflow file (e.g., `.
 
 4. `dotenv-value` (optional, type: string): The value needed to fill the `.env` file for the front-end client. This input is only relevant if `client-environment-file-path` is provided.
 
+5. `working-directory` (optional, type: string): The current working directory to run the docker command in. If not provided, the default value is `./`.
+
 ### Secrets
 
 1. `NPM_READ_PACKAGES_TOKEN` (optional, type: string): Token for reading NPM packages from private repositories

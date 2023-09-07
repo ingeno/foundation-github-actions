@@ -16,6 +16,8 @@ The "Docker Deploy" GitHub Action automates the process of building, tagging, an
 
 5. `npm-read-packages-token` (optional, type: string): Token for reading NPM packages from private repositories
 
+6. `working-directory` (optional, type: string): The current working directory to run the docker command in. If not provided, the default value is `./`.
+
 ## Workflow Example
 
 ```yaml
@@ -45,6 +47,7 @@ jobs:
           tag: v1.0.1
           dockerfile: path/to/Dockerfile
           npm-read-packages-token: secret-token-used-to-access-private-package-repositories
+          working-direcotry: some/sub/project/directory
 
       # Step 3: Optionally use the outputs in subsequent steps (example)
       - name: Display Docker Image Details
