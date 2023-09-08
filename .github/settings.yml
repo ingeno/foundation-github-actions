@@ -11,6 +11,7 @@ repository:
   name: foundation-github-actions
   description: This repository provides GitHub Actions, composite actions and reusable workflows for Ingeno repositories
   topics: greenfield, architecture, foundation
+  private: false
   is_template: false
   default_branch: main
   allow_auto_merge: true
