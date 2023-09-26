@@ -1,4 +1,4 @@
-name: Release-packages
+name: Release-actions
 on:
   pull_request:
     types:
@@ -10,7 +10,7 @@ permissions:
 
 jobs:
 
-  publish_package:
+  publish_actions:
     runs-on: ubuntu-latest
     if: github.event.pull_request.merged == true && contains(github.event.pull_request.labels.*.name, 'auto-release')
     steps:
@@ -36,11 +36,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-
-      - name: Setup .npmrc file for GitHub Packages
-        run: |
-          echo "@ingeno:registry=https://npm.pkg.github.com/" >> ~/.npmrc
-          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> ~/.npmrc
 
       - name: Create GitHub Release
         uses: ncipollo/release-action@v1.13.0
