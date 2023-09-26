@@ -1,0 +1,53 @@
+name: Release-packages
+on:
+  pull_request:
+    types:
+      - closed
+
+permissions:
+  contents: write
+  packages: write
+
+jobs:
+
+  publish_package:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true && contains(github.event.pull_request.labels.*.name, 'auto-release')
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup node
+        uses: ingeno/foundation-github-actions/actions/node-setup@v5
+        env:
+          NPM_READ_PACKAGES_TOKEN: ${{ secrets.NPM_READ_PACKAGES_TOKEN }}
+
+      - name: Get current project version
+        id: updated-version
+        shell: bash
+        run: |
+          version=$(node -p 'require("./lerna.json").version')
+          echo "Current project version is: $version"
+          echo "version=$version" >> $GITHUB_OUTPUT
+
+      - name: Configure Git User
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Setup .npmrc file for GitHub Packages
+        run: |
+          echo "@ingeno:registry=https://npm.pkg.github.com/" >> ~/.npmrc
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> ~/.npmrc
+
+      - name: Create GitHub Release
+        uses: ncipollo/release-action@v1.13.0
+        with:
+          token: "${{ secrets.GITHUB_TOKEN }}"
+          tag: "v${{ steps.updated-version.outputs.version }}"
+          commit: main
+          prerelease: false
+          name: "Release v${{ steps.updated-version.outputs.version }}"
+          generateReleaseNotes: true
