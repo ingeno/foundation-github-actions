@@ -39,23 +39,23 @@ jobs:
         run: |
           version=$(node -p 'require("./lerna.json").version')
           echo "Current project version is: $version"
-          echo "version=$version" >> $GITHUB_OUTPUT
+          echo "CURRENT_PROJECT_VERSION=$version" >> $GITHUB_OUTPUT
 
       - name: Checks if tag with the current project version already exists
         uses: mukunku/tag-exists-action@v1.4.0
-        id: tag
+        id: check-if-tag-exists
         with:
-          tag: v${{ steps.updated-version.outputs.version }}
+          tag: v${{ steps.updated-version.outputs.CURRENT_PROJECT_VERSION }}
 
       - name: Create Pull Request
-        if: steps.tag.outputs.exists == 'false'
+        if: steps.check-if-tag-exists.outputs.exists == 'false'
         uses: peter-evans/create-pull-request@v5
         with:
           token: ${{ secrets.FOUNDATION_START_RELEASE_TOKEN }}
-          commit-message: 'chore: release v${{ steps.updated-version.outputs.version }}'
-          title: 'chore: release v${{ steps.updated-version.outputs.version }}'
+          commit-message: 'chore: release v${{ steps.updated-version.outputs.CURRENT_PROJECT_VERSION }}'
+          title: 'chore: release v${{ steps.updated-version.outputs.CURRENT_PROJECT_VERSION }}'
           body: |
-            ## Release ${{ steps.updated-version.outputs.version }}
+            ## Release ${{ steps.updated-version.outputs.CURRENT_PROJECT_VERSION }}
           labels: "release, auto-release"
           branch: "release/next"
           committer: ${{ steps.import-gpg.outputs.name }} <${{ steps.import-gpg.outputs.email }}>

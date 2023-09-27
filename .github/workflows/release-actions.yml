@@ -30,7 +30,7 @@ jobs:
         run: |
           version=$(node -p 'require("./lerna.json").version')
           echo "Current project version is: $version"
-          echo "version=$version" >> $GITHUB_OUTPUT
+          echo "CURRENT_PROJECT_VERSION=$version" >> $GITHUB_OUTPUT
 
       - name: Configure Git User
         run: |
@@ -41,8 +41,8 @@ jobs:
         uses: ncipollo/release-action@v1.13.0
         with:
           token: "${{ secrets.GITHUB_TOKEN }}"
-          tag: "v${{ steps.updated-version.outputs.version }}"
+          tag: "v${{ steps.updated-version.outputs.CURRENT_PROJECT_VERSION }}"
           commit: main
           prerelease: false
-          name: "Release v${{ steps.updated-version.outputs.version }}"
+          name: "Release v${{ steps.updated-version.outputs.CURRENT_PROJECT_VERSION }}"
           generateReleaseNotes: true

@@ -5,6 +5,5 @@
     "type": "git",
     "url": "https://github.com/ingeno/foundation-github-actions.git",
     "directory": "./actions"
-  },
-  "description": ""
+  }
 }
