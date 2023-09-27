@@ -13,9 +13,7 @@ jobs:
           fetch-depth: 0
 
       - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18.x
+        uses: ingeno/foundation-github-actions/actions/node-setup@v5
 
       - name: Install Dependencies
         shell: bash
