@@ -1,0 +1,12 @@
+{
+  "$schema": "node_modules/lerna/schemas/lerna-schema.json",
+  "command": {
+    "version": {
+      "conventionalCommits": true,
+      "message": "chore(release): publish",
+      "allowBranch": "main"
+    }
+  },
+  "version": "3.1.0",
+  "npmClient": "yarn"
+}

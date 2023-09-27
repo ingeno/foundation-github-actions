@@ -1,0 +1,27 @@
+{
+  "name": "foundation-github-actions",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A repository of GitHub Actions, composite actions and reusable workflows developed at Ingeno",
+  "scripts": {
+    "prepare": "husky install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ingeno/foundation-github-actions.git"
+  },
+  "keywords": [],
+  "homepage": "https://github.com/ingeno/foundation-github-actions#readme",
+  "workspaces": {
+    "packages": [
+      "actions"
+    ]
+  },
+  "devDependencies": {
+    "@commitlint/cli": "17.7.1",
+    "@commitlint/config-conventional": "17.7.0",
+    "husky": "8.0.3",
+    "lerna": "7.3.0"
+  },
+  "packageManager": "yarn@3.6.3"
+}

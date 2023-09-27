@@ -1,0 +1,62 @@
+name: Create Release PR
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  prepare_release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup node
+        uses: ingeno/foundation-github-actions/actions/node-setup@v5
+        env:
+          NPM_READ_PACKAGES_TOKEN: ${{ secrets.NPM_READ_PACKAGES_TOKEN }}
+
+      - name: Import CI-Ingeno GPG key for signing commits
+        id: import-gpg
+        uses: crazy-max/ghaction-import-gpg@v6
+        with:
+          gpg_private_key: ${{ secrets.CI_INGENO_GPG_KEY_F9FC8A3AB03B7CF5_PRIVATE_KEY }}
+          passphrase: ${{ secrets.CI_INGENO_GPG_KEY_F9FC8A3AB03B7CF5_PASSPHRASE }}
+          git_config_global: true
+          git_user_signingkey: true
+          git_commit_gpgsign: true
+
+      - name: Update version using conventional commits
+        run: npx lerna version --conventional-commits --no-git-tag-version --exact --force-publish --yes
+
+      - name: Get current project version
+        id: updated-version
+        shell: bash
+        run: |
+          version=$(node -p 'require("./lerna.json").version')
+          echo "Current project version is: $version"
+          echo "CURRENT_PROJECT_VERSION=$version" >> $GITHUB_OUTPUT
+
+      - name: Checks if tag with the current project version already exists
+        uses: mukunku/tag-exists-action@v1.4.0
+        id: check-if-tag-exists
+        with:
+          tag: v${{ steps.updated-version.outputs.CURRENT_PROJECT_VERSION }}
+
+      - name: Create Pull Request
+        if: steps.check-if-tag-exists.outputs.exists == 'false'
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.FOUNDATION_START_RELEASE_TOKEN }}
+          commit-message: 'chore: release v${{ steps.updated-version.outputs.CURRENT_PROJECT_VERSION }}'
+          title: 'chore: release v${{ steps.updated-version.outputs.CURRENT_PROJECT_VERSION }}'
+          body: |
+            ## Release ${{ steps.updated-version.outputs.CURRENT_PROJECT_VERSION }}
+          labels: "release, auto-release"
+          branch: "release/next"
+          committer: ${{ steps.import-gpg.outputs.name }} <${{ steps.import-gpg.outputs.email }}>
+          author: ${{ steps.import-gpg.outputs.name }} <${{ steps.import-gpg.outputs.email }}>
