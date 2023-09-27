@@ -37,7 +37,7 @@ releases are initiated manually.
 
 #### Versioning
 A unified versioning system is implemented for all actions, ensuring uniformity across the entire project.
-This approach uses Lerna, which automatically adjusts the version of all actions and workflows in the monorepo.
+This approach uses Lerna, which automatically adjusts the version of all actions and workflows in the repository.
 As a result, all the previous are updated to the same version and are released simultaneously.
 
 #### Release Condition
@@ -54,7 +54,7 @@ With Lerna:
 #### Pull Request for New Release
 When a release is initiated, a Pull Request is created with the changelog and updated version. After this PR is
 approved and merged, the associated workflow will generate a release note and create a release with the proper tag.
-The unified versioning ensures a single release note and tag for the entire monorepo.
+The unified versioning ensures a single release note and tag for the entire repository.
 
 #### Commit Versioning
 [Conventional commits](https://www.conventionalcommits.org/en/v1.0.0/) drive the version updates as follows:
