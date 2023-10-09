@@ -14,7 +14,7 @@ runs:
   using: 'composite'
   steps:
     - name: Configure Aws Credentials for GitHub OIDC
-      uses: aws-actions/configure-aws-credentials@v2
+      uses: aws-actions/configure-aws-credentials@v4
       with:
         # the role AWSGitHubActionRoleForCICD is defined by @ingeno/foundation-infra-aws
         role-to-assume: arn:aws:iam::${{ inputs.aws-account-id }}:role/AWSGitHubActionRoleForCICD
