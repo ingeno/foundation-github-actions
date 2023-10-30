@@ -1,9 +1,12 @@
 {
-  extends: [
-    'config:base'
+  extends: ["config:base"],
+  timezone: "Canada/Eastern",
+  schedule: ["before 4am on Monday"],
+  packageRules: [
+    {
+      groupName: "Node.js",
+      matchPackageNames: ["node", "@types/node"],
+      allowedVersions: "<19.0.0",
+    },
   ],
-  timezone: 'Canada/Eastern',
-  schedule: [
-    "before 4am on Monday"
-  ]
 }
