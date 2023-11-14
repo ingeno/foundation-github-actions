@@ -22,7 +22,7 @@ inputs:
 
   config-file-path:
     required: false
-    default: './wss-unified-agent.config'
+    default: "./wss-unified-agent.config"
     description: Configuration file name (including file path).
 
   yarn-workspaces:
@@ -41,13 +41,13 @@ inputs:
     description: Comma-separated list of directories and/or files to scan
 
 runs:
-  using: 'composite'
+  using: "composite"
   steps:
     - name: Install Java
       uses: actions/setup-java@v3
       with:
-        distribution: 'temurin'
-        java-version: '17.0.7+7'
+        distribution: "temurin"
+        java-version: "17.0.7+7"
         java-package: jre
 
     - name: Copy workspaces lock file to subfolders
@@ -59,7 +59,7 @@ runs:
       # Forcing the exit 0 is meant to not fail the step when the root workspace is encountered.
       run: |
         export ROOT_WORKSPACE=$(pwd)
-        yarn workspaces foreach exec '[ ! -r "./yarn.lock" ] && cp $ROOT_WORKSPACE/yarn.lock . || exit 0'
+        yarn workspaces foreach --all exec '[ ! -r "./yarn.lock" ] && cp $ROOT_WORKSPACE/yarn.lock . || exit 0'
 
     - name: Scan
       shell: bash
