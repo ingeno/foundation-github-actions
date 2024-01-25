@@ -1,7 +1,4 @@
-name: 'Pull Request Changes'
-
-run-name: ‼️ Pull Request Changes
-
+name: 'Global - Lint PR title'
 on:
   pull_request_target:
     types:
@@ -11,14 +8,10 @@ on:
       - synchronize
 
 jobs:
-  lint-pr-title:
+  global--lint-pr-title:
     runs-on: ubuntu-latest
 
     steps:
-      - name: DEPRECATION WARNING
-        shell: bash
-        run: echo "DEPRECATED - use global--lint-pr-title"
-
       - name: Checkout
         uses: actions/checkout@v4
 
@@ -28,11 +21,11 @@ jobs:
       - name: Lint PR title
         uses: kevintyj/prlint@main
 
-  can-pull-request-merge:
+  global--can-pull-request-merge:
     name: Lint PR title check was successful
     runs-on: ubuntu-latest
     needs:
-      - lint-pr-title
+      - repo--lint-pr-title
 
     steps:
       - shell: bash

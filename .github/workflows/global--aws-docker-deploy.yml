@@ -1,6 +1,4 @@
-name: AWS Docker Deploy
-
-run-name: ‼️ AWS Docker Deploy
+name: Global AWS Docker Deploy
 
 on:
   workflow_call:
@@ -13,14 +11,14 @@ on:
         required: true
         type: string
         description: Location of the dockerfile
-      client-environment-file-path:
+      environment-file-path:
         required: false
         type: string
-        description: Location of the .env file of front-end client
+        description: Location of the .env file for the app (optional)
       dotenv-value:
         required: false
         type: string
-        description: The value needed to fill the .env
+        description: The value needed to fill the .env (required if environment-file-path is provided)
       working-directory:
         required: false
         type: string
@@ -38,18 +36,15 @@ permissions:
   contents: read
 
 jobs:
-  aws-docker-deploy:
+  global--aws-docker-deploy:
     runs-on: ubuntu-latest
     name: Push to AWS ECR
     steps:
-      - name: DEPRECATION WARNING
-        shell: bash
-        run: echo "DEPRECATED - use global--aws-docker-deploy"
       - name: Checkout
         uses: actions/checkout@v4
 
       - name: Configure AWS Credentials
-        uses: ingeno/foundation-github-actions/actions/configure-aws-credentials@v3.2.2
+        uses: ingeno/foundation-github-actions/actions/configure-aws-credentials@v3.2.1
         with:
           aws-account-id: ${{ vars.SHARED_SERVICES_ACCOUNT_ID }}
           aws-region: ${{ vars.AWS_REGION }}
@@ -58,15 +53,15 @@ jobs:
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v2
 
-      - name: Fill .env file for frontend-client
-        if: ${{ inputs.client-environment-file-path && inputs.dotenv-value }}
+      - name: Fill .env file
+        if: ${{ inputs.environment-file-path && inputs.dotenv-value }}
         shell: bash
         run: |
           echo ${{ inputs.dotenv-value }}
-          touch ${{ inputs.client-environment-file-path }}
-          echo -e "${{ inputs.dotenv-value }}" > ${{ inputs.client-environment-file-path }}
+          touch ${{ inputs.environment-file-path }}
+          echo -e "${{ inputs.dotenv-value }}" > ${{ inputs.environment-file-path }}
           echo ".env created!"
-          cat ${{ inputs.client-environment-file-path }}
+          cat ${{ inputs.environment-file-path }}
         working-directory: ${{ inputs.working-directory }}
 
       - name: Build, tag and Push image

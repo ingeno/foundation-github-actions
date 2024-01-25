@@ -1,7 +1,4 @@
-name: Create Release PR
-
-run-name: ‼️ Create Release PR
-
+name: 'Global - Create Release PR'
 on:
   workflow_dispatch:
 
@@ -10,12 +7,9 @@ permissions:
   pull-requests: write
 
 jobs:
-  prepare_release:
+  global--create-release-pr:
     runs-on: ubuntu-latest
     steps:
-      - name: DEPRECATION WARNING
-        shell: bash
-        run: echo "DEPRECATED - use global--create-release-pr"
       - name: Checkout code
         uses: actions/checkout@v4
         with:

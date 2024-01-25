@@ -1,4 +1,4 @@
-name: Docker Deploy
+name: Global - Docker Deploy
 description: Docker build, tag and push
 
 inputs:
@@ -33,9 +33,6 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - name: DEPRECATION WARNING
-      shell: bash
-      run: echo "DEPRECATED - use global--docker-deploy"
     - name: Build, tag and push image
       shell: bash
       id: docker_setup

@@ -1,4 +1,4 @@
-name: Deploy App to S3
+name: Global - Deploy App to S3
 description: Upload Build app to S3 Bucket
 
 inputs:
@@ -21,9 +21,6 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - name: DEPRECATION WARNING
-      shell: bash
-      run: echo "DEPRECATED - use global--aws-s3-deploy-app"
     - name: Upload to S3 Bucket (without index.html)
       shell: bash
       run: |
