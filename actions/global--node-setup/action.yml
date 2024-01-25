@@ -1,4 +1,4 @@
-name: Node Setup
+name: Global - Node Setup
 description: Read .nvmrc, nvm use, cache and install
 
 inputs:
@@ -11,9 +11,6 @@ runs:
   using: 'composite'
 
   steps:
-    - name: DEPRECATION WARNING
-      shell: bash
-      run: echo "DEPRECATED - use global--node-setup"
     - name: Setup Node
       uses: actions/setup-node@v3
       with:
@@ -27,7 +24,7 @@ runs:
 
     - name: Cache Root Dependencies
       id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
-      uses: actions/cache@v4
+      uses: actions/cache@v3
       with:
         path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
         key: ${{ runner.os }}-yarn-${{ hashFiles('./yarn.lock') }}

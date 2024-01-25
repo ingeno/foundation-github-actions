@@ -1,4 +1,4 @@
-name: Tag Docker Image
+name: Global - Tag Docker Image
 description: Tag existing image on the AWS ECR Registry
 
 inputs:
@@ -17,9 +17,6 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - name: DEPRECATION WARNING
-      shell: bash
-      run: echo "DEPRECATED - use global--aws-docker-tag"
     - name: Tag Docker Image
       shell: bash
       run: |

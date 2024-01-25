@@ -1,4 +1,4 @@
-name: Mend Scan
+name: Global - Mend Scan
 description: Scan for vulnerabilities and license compliance
 
 inputs:
@@ -43,9 +43,6 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: DEPRECATION WARNING
-      shell: bash
-      run: echo "DEPRECATED - use global--mend-scan"
     - name: Install Java
       uses: actions/setup-java@v4
       with:

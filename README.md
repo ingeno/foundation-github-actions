@@ -9,13 +9,13 @@ and reusable workflows.
 
 ### Actions
 
-- [AWS Cognito Info](actions/aws-cognito-info/README.md)
-- [AWS Docker Tag](actions/aws-docker-tag/README.md)
-- [AWS S3 Deploy App](actions/aws-s3-deploy-app/README.md)
-- [Configure AWS Credentials](actions/configure-aws-credentials/README.md)
-- [Docker Deploy](actions/docker-deploy/README.md)
-- [Mend Scan Action](actions/mend-scan/README.md)
-- [Node Setup](actions/node-setup/README.md)
+- [AWS Cognito Info](actions/global--aws-cognito-info/README.md)
+- [AWS Docker Tag](actions/global--aws-docker-tag/README.md)
+- [AWS S3 Deploy App](actions/global--aws-s3-deploy-app/README.md)
+- [Configure AWS Credentials](actions/global--configure-aws-credentials/README.md)
+- [Docker Deploy](actions/global--docker-deploy/README.md)
+- [Mend Scan Action](actions/global--mend-scan/README.md)
+- [Node Setup](actions/global--node-setup/README.md)
 
 ### Workflows
 
