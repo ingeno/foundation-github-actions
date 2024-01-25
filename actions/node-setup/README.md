@@ -44,7 +44,7 @@ jobs:
 ## Notes
 
 - Before using this action, make sure to have `nvm` and `yarn` installed on the runner machine.
-- The action uses `actions/setup-node@v3` to set up the specified Node.js version using the `.nvmrc` file.
+- The action uses `actions/setup-node@v4` to set up the specified Node.js version using the `.nvmrc` file.
 - It then caches the Yarn cache directory using `actions/cache@v3` to speed up future installations.
 - The action finally installs the project dependencies using Yarn with the `yarn install --immutable` command.
 - To see what the current latest version of this action is, head over to this repository's [release page](https://github.com/ingeno/foundation-github-actions/releases).
