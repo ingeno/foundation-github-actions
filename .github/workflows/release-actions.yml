@@ -43,7 +43,7 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
       - name: Create GitHub Release
-        uses: ncipollo/release-action@v1.13.0
+        uses: ncipollo/release-action@v1.14.0
         with:
           token: "${{ secrets.GITHUB_TOKEN }}"
           tag: "v${{ steps.updated-version.outputs.CURRENT_PROJECT_VERSION }}"
