@@ -6,6 +6,10 @@ inputs:
     required: true
     description: AWS Region
 
+  user-pool-name:
+    required: true
+    description: The name of the user pool to get the info from (e.g. projectname-dev-auth)
+
 outputs:
   user-pool-id:
     description: AWS Cognito user pool id
@@ -24,9 +28,10 @@ runs:
       run: |
         USER_POOL_ID=$(aws cognito-idp \
           --region ${{ inputs.aws-region }} \
-          list-user-pools --max-results 1 \
-          --output text \
-          --query "UserPools[0].Id")
+          list-user-pools --max-results 60 \
+          | jq -r \
+          --arg userPoolName "${{ inputs.user-pool-name }}" \
+          '.UserPools[] | select(.Name == $userPoolName).Id'
         echo "USER_POOL_ID=$USER_POOL_ID" >> $GITHUB_OUTPUT
     - id: get-user-pool-client-id
       name: Get AWS Cognito user pool client id
