@@ -48,7 +48,7 @@ jobs:
           echo "CURRENT_PROJECT_VERSION=$version" >> $GITHUB_OUTPUT
 
       - name: Checks if tag with the current project version already exists
-        uses: mukunku/tag-exists-action@v1.5.0
+        uses: mukunku/tag-exists-action@v1.6.0
         id: check-if-tag-exists
         with:
           tag: v${{ steps.updated-version.outputs.CURRENT_PROJECT_VERSION }}
