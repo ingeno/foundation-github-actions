@@ -4,7 +4,7 @@
   "private": true,
   "description": "A repository of GitHub Actions, composite actions and reusable workflows developed at Ingeno",
   "scripts": {
-    "prepare": "husky install"
+    "prepare": "husky"
   },
   "repository": {
     "type": "git",
