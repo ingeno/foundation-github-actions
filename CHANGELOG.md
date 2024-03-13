@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.2.6](https://github.com/ingeno/foundation-github-actions/compare/v3.2.5...v3.2.6) (2024-03-13)
+
+
+### Reverts
+
+* Revert "chore(deps): update commitlint monorepo (#69)" (#80) ([882025f](https://github.com/ingeno/foundation-github-actions/commit/882025f325887ce78c86ef80be55d827bddb4abd)), closes [#69](https://github.com/ingeno/foundation-github-actions/issues/69) [#80](https://github.com/ingeno/foundation-github-actions/issues/80)
+
+
+
+
+
 ## [3.2.5](https://github.com/ingeno/foundation-github-actions/compare/v3.2.4...v3.2.5) (2024-01-26)
 
 **Note:** Version bump only for package foundation-github-actions
