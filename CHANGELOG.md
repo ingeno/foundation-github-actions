@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.2.6](https://github.com/ingeno/foundation-github-actions/compare/v3.2.5...v3.2.6) (2024-03-14)
+
+
+### Maintenance
+
+* **deps:** bump ip from 2.0.0 to 2.0.1 ([#77](https://github.com/ingeno/foundation-github-actions/issues/77)) ([a786ecc](https://github.com/ingeno/foundation-github-actions/commit/a786ecc498035e12fd1cbfa7072b0cd16b943257))
+* **deps:** update commitlint monorepo ([#69](https://github.com/ingeno/foundation-github-actions/issues/69)) ([d928141](https://github.com/ingeno/foundation-github-actions/commit/d9281412f91ba13f43d9fb627d8f6812f778f1dd))
+* **deps:** update dependency husky to v9 ([#76](https://github.com/ingeno/foundation-github-actions/issues/76)) ([42bd64d](https://github.com/ingeno/foundation-github-actions/commit/42bd64d760c50ad234caba6341ccaa6e6de041e2))
+* **deps:** update dependency lerna to v8.1.2 ([#72](https://github.com/ingeno/foundation-github-actions/issues/72)) ([a874d1e](https://github.com/ingeno/foundation-github-actions/commit/a874d1eec94b3df2feb84258f9823d2281a9756a))
+* **deps:** update dependency node to v18.19.1 ([#75](https://github.com/ingeno/foundation-github-actions/issues/75)) ([feed8a3](https://github.com/ingeno/foundation-github-actions/commit/feed8a3c0068f98a026b558b5d1b4d6fbab679c8))
+* **deps:** update ingeno/foundation-github-actions action to v3.2.5 ([#68](https://github.com/ingeno/foundation-github-actions/issues/68)) ([ac8ca2d](https://github.com/ingeno/foundation-github-actions/commit/ac8ca2d3a97fb28adf524ef4388fdef99c113f64))
+* **deps:** update mukunku/tag-exists-action action to v1.6.0 ([#70](https://github.com/ingeno/foundation-github-actions/issues/70)) ([540f604](https://github.com/ingeno/foundation-github-actions/commit/540f6040d4897f9c4b1c95b434605e5ff5cf61b7))
+* **deps:** update ncipollo/release-action action to v1.14.0 ([#73](https://github.com/ingeno/foundation-github-actions/issues/73)) ([58b13ba](https://github.com/ingeno/foundation-github-actions/commit/58b13ba0545212583e7bacdcfb509cb813bfddf6))
+* **deps:** update peter-evans/create-pull-request action to v6 ([#78](https://github.com/ingeno/foundation-github-actions/issues/78)) ([3118439](https://github.com/ingeno/foundation-github-actions/commit/311843910c7f84e1dc70aad4a745b9e76b02c4af))
+* **deps:** update yarn to v4.1.1 ([#71](https://github.com/ingeno/foundation-github-actions/issues/71)) ([2e436a8](https://github.com/ingeno/foundation-github-actions/commit/2e436a8d47095ad6cdb6e8205952914022d01470))
+* include chores in changelog ([#82](https://github.com/ingeno/foundation-github-actions/issues/82)) ([2cf597c](https://github.com/ingeno/foundation-github-actions/commit/2cf597cab6796dab4a33c0ca948d689f15d2852c))
+
+
+### Reverts
+
+* Revert "chore(deps): update commitlint monorepo (#69)" (#80) ([882025f](https://github.com/ingeno/foundation-github-actions/commit/882025f325887ce78c86ef80be55d827bddb4abd)), closes [#69](https://github.com/ingeno/foundation-github-actions/issues/69) [#80](https://github.com/ingeno/foundation-github-actions/issues/80)
+
+
+
 ## [3.2.5](https://github.com/ingeno/foundation-github-actions/compare/v3.2.4...v3.2.5) (2024-01-26)
 
 **Note:** Version bump only for package foundation-github-actions
