@@ -8,5 +8,10 @@
       matchPackageNames: ["node", "@types/node"],
       allowedVersions: "<19.0.0",
     },
+    {
+      // commitlint v19 is in pure ESM and cannot be loaded by the prlint action we use
+      matchPackageNames: ['@commitlint/cli', '@commitlint/config-conventional'],
+      allowedVersions: '18.4.4',
+    }
   ],
 }
