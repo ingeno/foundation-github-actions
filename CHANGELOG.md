@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.2.7](https://github.com/ingeno/foundation-github-actions/compare/v3.2.6...v3.2.7) (2024-07-03)
+
+
+### Maintenance
+
+* **deps:** bump braces from 3.0.2 to 3.0.3 ([#93](https://github.com/ingeno/foundation-github-actions/issues/93)) ([82f700b](https://github.com/ingeno/foundation-github-actions/commit/82f700b413cfe1541d9c59c87d8fbd6280d7dafe))
+* **deps:** bump ejs from 3.1.9 to 3.1.10 ([#89](https://github.com/ingeno/foundation-github-actions/issues/89)) ([c5761f4](https://github.com/ingeno/foundation-github-actions/commit/c5761f42d4db284fbf8519a0a81c633a6135d456))
+* **deps:** bump follow-redirects from 1.15.5 to 1.15.6 ([#84](https://github.com/ingeno/foundation-github-actions/issues/84)) ([0156c4b](https://github.com/ingeno/foundation-github-actions/commit/0156c4bed20d50173ba7f8fc167e806dbf68111e))
+* **deps:** bump tar from 6.2.0 to 6.2.1 ([#94](https://github.com/ingeno/foundation-github-actions/issues/94)) ([426f2fb](https://github.com/ingeno/foundation-github-actions/commit/426f2fb1c28a39297d677cfbf2d61768bf2a650a))
+* **deps:** update dependency lerna to v8.1.3 ([#91](https://github.com/ingeno/foundation-github-actions/issues/91)) ([bb4732a](https://github.com/ingeno/foundation-github-actions/commit/bb4732af3bbdf1bcadcc274865cb9956783226a3))
+* **deps:** update dependency lerna to v8.1.5 ([#95](https://github.com/ingeno/foundation-github-actions/issues/95)) ([e6c41b2](https://github.com/ingeno/foundation-github-actions/commit/e6c41b2e96b3088893d5e4ea2bc41b1acc5ac046))
+* **deps:** update dependency node to v18.20.3 ([#88](https://github.com/ingeno/foundation-github-actions/issues/88)) ([e849cfb](https://github.com/ingeno/foundation-github-actions/commit/e849cfb3a5dfa73d81f5bf8beaa3fedd0ad8df72))
+* **deps:** update ingeno/foundation-github-actions action to v3.2.6 ([#85](https://github.com/ingeno/foundation-github-actions/issues/85)) ([9c813e4](https://github.com/ingeno/foundation-github-actions/commit/9c813e42048c547e2520bac9108f3c2d1c1ed811))
+* **deps:** update yarn to v4.3.0 ([#90](https://github.com/ingeno/foundation-github-actions/issues/90)) ([927ee1f](https://github.com/ingeno/foundation-github-actions/commit/927ee1f2561eed6abad7bec80797d3b31fd83080))
+* **deps:** update yarn to v4.3.1 ([#96](https://github.com/ingeno/foundation-github-actions/issues/96)) ([d6fffbb](https://github.com/ingeno/foundation-github-actions/commit/d6fffbb98d03aa39d4dfb596d5e57fc302b5ca40))
+* run renovate on wednesday mornings ([#92](https://github.com/ingeno/foundation-github-actions/issues/92)) ([8d7b0fc](https://github.com/ingeno/foundation-github-actions/commit/8d7b0fc6cdf900fa132ab391f70905d8b8584515))
+
+
+### Bug Fixes
+
+* tell renovate to leave commitlint alone ([#87](https://github.com/ingeno/foundation-github-actions/issues/87)) ([099af1d](https://github.com/ingeno/foundation-github-actions/commit/099af1d2d18a396040637c321b368f6fa8376c8c))
+
+
+
 ## [3.2.6](https://github.com/ingeno/foundation-github-actions/compare/v3.2.5...v3.2.6) (2024-03-14)
 
 
