@@ -8,8 +8,9 @@ on:
         type: string
         description: Name of the repository
       dockerfile:
-        required: true
+        required: false
         type: string
+        default: Dockerfile
         description: Location of the dockerfile
       environment-file-path:
         required: false
@@ -44,14 +45,14 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Configure AWS Credentials
-        uses: ingeno/foundation-github-actions/actions/configure-aws-credentials@v3.2.6
+        uses: ingeno/foundation-github-actions/actions/global--configure-aws-credentials@v3.2.6
         with:
           aws-account-id: ${{ vars.SHARED_SERVICES_ACCOUNT_ID }}
           aws-region: ${{ vars.AWS_REGION }}
 
       - name: Login to ECR
         id: login-ecr
-        uses: aws-actions/amazon-ecr-login@v2
+        uses: aws-actions/amazon-ecr-login@v2.0.1
 
       - name: Fill .env file
         if: ${{ inputs.environment-file-path && inputs.dotenv-value }}
@@ -65,7 +66,7 @@ jobs:
         working-directory: ${{ inputs.working-directory }}
 
       - name: Build, tag and Push image
-        uses: ingeno/foundation-github-actions/actions/docker-deploy@v3.2.6
+        uses: ingeno/foundation-github-actions/actions/global--docker-deploy@v3.2.6
         with:
           registry: ${{ vars.SHARED_SERVICES_ACCOUNT_ID }}.dkr.ecr.${{ vars.AWS_REGION }}.amazonaws.com
           repository: ${{ inputs.repository }}
