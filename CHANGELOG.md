@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.2.8](https://github.com/ingeno/foundation-github-actions/compare/v3.2.7...v3.2.8) (2024-08-06)
+
+
+### Maintenance
+
+* **deps:** update dependency husky to v9.1.4 ([#103](https://github.com/ingeno/foundation-github-actions/issues/103)) ([c5e4832](https://github.com/ingeno/foundation-github-actions/commit/c5e48329f8f497d111b5f722fb10e4d062fe1537))
+* **deps:** update dependency lerna to v8.1.6 ([#99](https://github.com/ingeno/foundation-github-actions/issues/99)) ([83ca585](https://github.com/ingeno/foundation-github-actions/commit/83ca5859d31a0d5b39019e97503f03e18a95b617))
+* **deps:** update dependency lerna to v8.1.7 ([#102](https://github.com/ingeno/foundation-github-actions/issues/102)) ([d3f10b1](https://github.com/ingeno/foundation-github-actions/commit/d3f10b14056e78f4752b9a483528ff4303c120a2))
+* **deps:** update dependency node to v18.20.4 ([#100](https://github.com/ingeno/foundation-github-actions/issues/100)) ([f008ac7](https://github.com/ingeno/foundation-github-actions/commit/f008ac740b6c274a6721a159be0a90f4d72dea49))
+* **deps:** update ingeno/foundation-github-actions action to v3.2.7 ([#101](https://github.com/ingeno/foundation-github-actions/issues/101)) ([1d0fcbe](https://github.com/ingeno/foundation-github-actions/commit/1d0fcbe8d60f4bbf75c52f1a7edc29940b2ac0e6))
+
+
+### Bug Fixes
+
+* fix warnings and use global actions ([#98](https://github.com/ingeno/foundation-github-actions/issues/98)) ([c6adb51](https://github.com/ingeno/foundation-github-actions/commit/c6adb51ec6e436ab0f7f9aa2add81ad68f5aab7f))
+* npm read package token is missing ([#104](https://github.com/ingeno/foundation-github-actions/issues/104)) ([0a493d5](https://github.com/ingeno/foundation-github-actions/commit/0a493d55035ca5f0c16167d60ace789b815c0ea3))
+
+
+
 ## [3.2.7](https://github.com/ingeno/foundation-github-actions/compare/v3.2.6...v3.2.7) (2024-07-03)
 
 
