@@ -30,11 +30,6 @@ on:
         type: string
         default: ${{ github.sha }}
         description: The tag to use for the Docker image
-      npm-read-packages-token:
-        type: string
-        required: false
-        default: ''
-        description: Token for reading NPM packages from private repositories
 
 # These permissions are needed to interact with GitHub's OIDC Token endpoint.
 permissions:
@@ -77,5 +72,5 @@ jobs:
           repository: ${{ inputs.repository }}
           tag: ${{ inputs.tag }}
           dockerfile: ${{ inputs.dockerfile }}
-          npm-read-packages-token: ${{ inputs.npm-read-packages-token }}
+          npm-read-packages-token: ${{ secrets.NPM_READ_PACKAGES_TOKEN }}
           working-directory: ${{ inputs.working-directory }}
