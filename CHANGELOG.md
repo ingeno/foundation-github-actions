@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.2.9](https://github.com/ingeno/foundation-github-actions/compare/v3.2.8...v3.2.9) (2024-08-07)
+
+
+### Bug Fixes
+
+* revert token stuff, it was a token issue ([#106](https://github.com/ingeno/foundation-github-actions/issues/106)) ([97d2697](https://github.com/ingeno/foundation-github-actions/commit/97d269746220e23b551867cf1d57faf49ad61804))
+
+
+
 ## [3.2.8](https://github.com/ingeno/foundation-github-actions/compare/v3.2.7...v3.2.8) (2024-08-06)
 
 
