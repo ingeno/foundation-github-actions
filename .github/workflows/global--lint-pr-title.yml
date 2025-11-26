@@ -13,7 +13,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Setup node
         uses: ingeno/foundation-github-actions/actions/node-setup@v3.2.9

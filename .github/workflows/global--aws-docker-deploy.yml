@@ -42,7 +42,7 @@ jobs:
     name: Push to AWS ECR
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Configure AWS Credentials
         uses: ingeno/foundation-github-actions/actions/global--configure-aws-credentials@v3.2.9

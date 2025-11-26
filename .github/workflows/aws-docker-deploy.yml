@@ -46,7 +46,7 @@ jobs:
         shell: bash
         run: echo "DEPRECATED - use global--aws-docker-deploy"
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Configure AWS Credentials
         uses: ingeno/foundation-github-actions/actions/configure-aws-credentials@v3.2.9
