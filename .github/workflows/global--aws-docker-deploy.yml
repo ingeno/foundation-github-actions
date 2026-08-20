@@ -52,7 +52,7 @@ jobs:
 
       - name: Login to ECR
         id: login-ecr
-        uses: aws-actions/amazon-ecr-login@v2.0.1
+        uses: aws-actions/amazon-ecr-login@v2.1.7
 
       - name: Fill .env file
         if: ${{ inputs.environment-file-path && inputs.dotenv-value }}
